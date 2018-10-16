@@ -15,29 +15,27 @@ function setup() {
     myStar.h = random(30,120);
     myStar.w = random(40,130);
     myStar.speed = random(4,10);
-
     stars.push(myStar);
   }
 }
 
 function draw() {
-  background(230);
+  background(random(255));
 
   for(var j = 0; j < stars.length; j++){
     stars[j].move();
     stars[j].display();
     // stars[j].diameter +=0.5;
-    stars[j].color = color(random(255));
     stars[j].over(mouseX, mouseY);
   }
 
 //text
-  strokeWeight(4);
+  strokeWeight(6);
   stroke(255);
-  fill(random(255),random(255),random(255));
+  fill(random(255),random(255),random(255),random(255));
   textSize(40);
   textAlign(CENTER);
-  text('It is rainbow time, move the mouse over them and colour the world!',width/2,height/8);
+  text('It is rainbow time, move the mouse and colour the world!',width/2,height/8);
 
 }
 
@@ -46,7 +44,7 @@ function Star(_x,_y,_h,_w) {
   this.y = _y;
   this.h = _h;
   this.w = _w;
-  this.color = 'yellow';
+  this.color = (random(255));
   this.speed = 5;
 //bouncing
   var yDir = 1;
@@ -63,10 +61,7 @@ function Star(_x,_y,_h,_w) {
   var d = dist(mouseX, mouseY, this.x, this.y);
   if (d < this.h/2) {
   this.color = color(random(255),random(255),random(255))
-  } else{
-  this.color= color(random(255),random(255))
-    }
-  }
+  }  }
 
 this.move = function() {
   this.x += this.speed * xDir;
